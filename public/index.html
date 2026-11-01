@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Calculator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Sora:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <div class="ambient"></div>
+  <main class="calc-shell">
+    <header class="calc-header">
+      <span class="brand">CALC</span>
+      <span class="brand-dot"></span>
+    </header>
+
+    <div class="display" id="display">
+      <div class="display-history" id="history"></div>
+      <div class="display-current" id="current">0</div>
+    </div>
+
+    <div class="keypad">
+      <button class="key key--fn" data-action="clear">AC</button>
+      <button class="key key--fn" data-action="sign">±</button>
+      <button class="key key--fn" data-action="percent">%</button>
+      <button class="key key--op" data-op="/">÷</button>
+
+      <button class="key" data-digit="7">7</button>
+      <button class="key" data-digit="8">8</button>
+      <button class="key" data-digit="9">9</button>
+      <button class="key key--op" data-op="*">×</button>
+
+      <button class="key" data-digit="4">4</button>
+      <button class="key" data-digit="5">5</button>
+      <button class="key" data-digit="6">6</button>
+      <button class="key key--op" data-op="-">−</button>
+
+      <button class="key" data-digit="1">1</button>
+      <button class="key" data-digit="2">2</button>
+      <button class="key" data-digit="3">3</button>
+      <button class="key key--op" data-op="+">+</button>
+
+      <button class="key key--wide" data-digit="0">0</button>
+      <button class="key" data-action="decimal">.</button>
+      <button class="key key--equals" data-action="equals">=</button>
+    </div>
+
+    <footer class="calc-footer">
+      <span class="hint">Keyboard ready · Esc clears · Backspace deletes</span>
+    </footer>
+  </main>
+
+  <script src="/app.js"></script>
+</body>
+</html>
