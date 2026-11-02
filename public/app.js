@@ -20,7 +20,7 @@
   let isDegree = true;
   let pendingPow = false;
 
-  const OP_SYMBOLS = { "+": "+", "-": "−", "*": "×", "/": "÷" };
+  const OP_SYMBOLS = { "+": "+", "-": "−", "*": "×", "/": "÷", "^": "^" };
 
   var historyEntries = [];
 
@@ -126,6 +126,8 @@
       case "/":
         if (y === 0) return "Error";
         result = x / y; break;
+      case "^":
+        result = Math.pow(x, y); break;
       default: return b;
     }
     return String(result);
