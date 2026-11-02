@@ -16,10 +16,50 @@
   --text-dim: #6b6b80;
   --display-text: #ffffff;
   --display-dim: #4a4a60;
+  --display-bg: rgba(0, 0, 0, 0.3);
+  --display-border: rgba(255, 255, 255, 0.03);
+  --key-border: rgba(255, 255, 255, 0.04);
+  --op-border: rgba(255, 106, 0, 0.25);
+  --shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.7);
+  --history-item-bg: rgba(0, 0, 0, 0.25);
+  --history-item-border: rgba(255, 255, 255, 0.03);
+  --ambient-1: rgba(255, 106, 0, 0.08);
+  --ambient-2: rgba(255, 106, 0, 0.04);
+  --ambient-3: rgba(80, 60, 200, 0.04);
   --radius: 16px;
   --key-radius: 12px;
   --font-ui: "Sora", system-ui, sans-serif;
   --font-mono: "JetBrains Mono", monospace;
+}
+
+[data-theme="light"] {
+  --bg: #f0f0f5;
+  --shell: #ffffff;
+  --shell-border: rgba(0, 0, 0, 0.08);
+  --key: #e8e8f0;
+  --key-hover: #d8d8e4;
+  --key-active: #c8c8d8;
+  --fn: #e0e0ea;
+  --fn-hover: #d0d0de;
+  --orange: #e85d00;
+  --orange-hover: #d45000;
+  --orange-glow: rgba(232, 93, 0, 0.25);
+  --red: #d63648;
+  --red-hover: #c4283a;
+  --text: #1a1a2e;
+  --text-dim: #7a7a8e;
+  --display-text: #1a1a2e;
+  --display-dim: #9999ab;
+  --display-bg: rgba(0, 0, 0, 0.03);
+  --display-border: rgba(0, 0, 0, 0.05);
+  --key-border: rgba(0, 0, 0, 0.04);
+  --op-border: rgba(232, 93, 0, 0.3);
+  --shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.15);
+  --history-item-bg: rgba(0, 0, 0, 0.03);
+  --history-item-border: rgba(0, 0, 0, 0.05);
+  --ambient-1: rgba(232, 93, 0, 0.06);
+  --ambient-2: rgba(232, 93, 0, 0.03);
+  --ambient-3: rgba(100, 80, 200, 0.03);
 }
 
 * {
@@ -48,9 +88,9 @@ body {
   position: fixed;
   inset: 0;
   background:
-    radial-gradient(ellipse 60% 50% at 50% 0%, rgba(255, 106, 0, 0.08), transparent 60%),
-    radial-gradient(ellipse 40% 40% at 80% 80%, rgba(255, 106, 0, 0.04), transparent 50%),
-    radial-gradient(ellipse 40% 40% at 20% 90%, rgba(80, 60, 200, 0.04), transparent 50%);
+    radial-gradient(ellipse 60% 50% at 50% 0%, var(--ambient-1), transparent 60%),
+    radial-gradient(ellipse 40% 40% at 80% 80%, var(--ambient-2), transparent 50%),
+    radial-gradient(ellipse 40% 40% at 20% 90%, var(--ambient-3), transparent 50%);
   pointer-events: none;
   z-index: 0;
 }
@@ -79,7 +119,7 @@ body {
   padding: 1.25rem 1.25rem 1rem;
   box-shadow:
     0 1px 0 rgba(255, 255, 255, 0.04) inset,
-    0 30px 60px -20px rgba(0, 0, 0, 0.7),
+    var(--shadow),
     0 0 0 1px rgba(255, 255, 255, 0.02);
   display: flex;
   flex-direction: column;
@@ -127,7 +167,7 @@ body {
   letter-spacing: 0.1em;
   color: var(--text-dim);
   background: var(--fn);
-  border: 1px solid rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--key-border);
   border-radius: 6px;
   padding: 0.3rem 0.55rem;
   cursor: pointer;
@@ -146,7 +186,7 @@ body {
 }
 
 .display {
-  background: rgba(0, 0, 0, 0.3);
+  background: var(--display-bg);
   border-radius: var(--key-radius);
   padding: 1.1rem 1.25rem 0.9rem;
   text-align: right;
@@ -154,7 +194,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  border: 1px solid rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--display-border);
   overflow: hidden;
 }
 
@@ -269,7 +309,7 @@ body {
   color: var(--orange);
   font-size: 1.5rem;
   font-weight: 600;
-  border: 1px solid rgba(255, 106, 0, 0.25);
+  border: 1px solid var(--op-border);
 }
 
 .key--op:hover {
@@ -334,7 +374,7 @@ body {
   padding: 1.25rem 1rem 1rem;
   box-shadow:
     0 1px 0 rgba(255, 255, 255, 0.04) inset,
-    0 30px 60px -20px rgba(0, 0, 0, 0.7);
+    var(--shadow);
   display: none;
   flex-direction: column;
   gap: 0.75rem;
@@ -366,7 +406,7 @@ body {
   letter-spacing: 0.08em;
   color: var(--text-dim);
   background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--key-border);
   border-radius: 6px;
   padding: 0.25rem 0.5rem;
   cursor: pointer;
@@ -407,8 +447,8 @@ body {
 }
 
 .history-item {
-  background: rgba(0, 0, 0, 0.25);
-  border: 1px solid rgba(255, 255, 255, 0.03);
+  background: var(--history-item-bg);
+  border: 1px solid var(--history-item-border);
   border-radius: 8px;
   padding: 0.6rem 0.75rem;
   cursor: pointer;

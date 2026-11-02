@@ -10,6 +10,15 @@
   const historyList = document.getElementById("historyList");
   const historyClear = document.getElementById("historyClear");
   const hintEl = document.getElementById("hint");
+  const themeToggle = document.getElementById("themeToggle");
+
+  let currentTheme = "dark";
+
+  themeToggle.addEventListener("click", function () {
+    currentTheme = currentTheme === "dark" ? "light" : "dark";
+    document.documentElement.setAttribute("data-theme", currentTheme === "light" ? "light" : "dark");
+    themeToggle.textContent = currentTheme === "light" ? "☀️" : "🌙";
+  });
 
   let current = "0";
   let previous = null;
