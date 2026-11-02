@@ -11,15 +11,49 @@
 </head>
 <body>
   <div class="ambient"></div>
-  <main class="calc-shell">
+
+  <div class="layout-wrap">
+  <main class="calc-shell" id="calcShell">
     <header class="calc-header">
       <span class="brand">CALC</span>
       <span class="brand-dot"></span>
+      <div class="header-actions">
+        <button class="mode-btn" id="modeToggle" title="Toggle scientific mode">SCI</button>
+        <button class="mode-btn" id="historyToggle" title="Toggle history">HIST</button>
+      </div>
     </header>
 
     <div class="display" id="display">
       <div class="display-history" id="history"></div>
       <div class="display-current" id="current">0</div>
+    </div>
+
+    <!-- Scientific keypad (hidden in basic mode) -->
+    <div class="keypad keypad-sci" id="sciKeypad">
+      <button class="key key--fn" data-sci="deg">DEG</button>
+      <button class="key key--fn" data-sci="sin">sin</button>
+      <button class="key key--fn" data-sci="cos">cos</button>
+      <button class="key key--fn" data-sci="tan">tan</button>
+
+      <button class="key key--fn" data-sci="asin">sin⁻¹</button>
+      <button class="key key--fn" data-sci="acos">cos⁻¹</button>
+      <button class="key key--fn" data-sci="atan">tan⁻¹</button>
+      <button class="key key--fn" data-sci="pi">π</button>
+
+      <button class="key key--fn" data-sci="log">log</button>
+      <button class="key key--fn" data-sci="ln">ln</button>
+      <button class="key key--fn" data-sci="sqrt">√</button>
+      <button class="key key--fn" data-sci="pow">x^y</button>
+
+      <button class="key key--fn" data-sci="square">x²</button>
+      <button class="key key--fn" data-sci="cube">x³</button>
+      <button class="key key--fn" data-sci="inv">1/x</button>
+      <button class="key key--fn" data-sci="fact">x!</button>
+
+      <button class="key key--fn" data-sci="exp">e^x</button>
+      <button class="key key--fn" data-sci="tenx">10^x</button>
+      <button class="key key--fn" data-sci="e">e</button>
+      <button class="key key--fn" data-sci="abs">|x|</button>
     </div>
 
     <div class="keypad">
@@ -49,9 +83,22 @@
     </div>
 
     <footer class="calc-footer">
-      <span class="hint">Keyboard ready · Esc clears · Backspace deletes</span>
+      <span class="hint" id="hint">Keyboard ready · Esc clears · Backspace deletes</span>
     </footer>
   </main>
+
+  <!-- History panel -->
+  <aside class="history-panel" id="historyPanel">
+
+    <div class="history-panel-header">
+      <span class="history-title">History</span>
+      <button class="history-clear" id="historyClear" title="Clear history">Clear</button>
+    </div>
+    <div class="history-list" id="historyList">
+      <div class="history-empty">No calculations yet</div>
+    </div>
+  </aside>
+  </div><!-- /layout-wrap -->
 
   <script src="/app.js"></script>
 </body>
